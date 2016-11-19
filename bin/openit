@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+/* ================================================================
+ * openit by xdf(xudafeng[at]126.com)
+ *
+ * first created at : Fri Nov 18 2016 18:42:28 GMT+0800 (CST)
+ *
+ * ================================================================
+ * Copyright 2013 xdf
+ *
+ * Licensed under the MIT License
+ * You may not use this file except in compliance with the License.
+ *
+ * ================================================================ */
+
+'use strict';
+
+const fs = require('fs');
+const _ = require('xutil');
+const path = require('path');
+const EOL = require('os').EOL;
+const child_process = require('child_process');
+
+const cwd = process.cwd();
+const platform = process.platform;
+
+const linuxShell = platform === 'linux' ? 'xdg-open' : 'open';
+const openShell = platform === 'win32' ? 'start' : linuxShell;
+
+const git_config = path.join(cwd, '.git', 'config');
+
+var get_remote_url = content => {
+  const list = content.split(EOL);
+  var res;
+  list.forEach(item => {
+    item = item.trim();
+    var str = item.slice(0, 10);
+
+    if (str === 'url = git@' || str === 'url = http') {
+      const _list = item.split(' ');
+      const dist = _list[_list.length - 1];
+
+      if (dist.slice(0, 4) === 'git@') {
+        res = dist.replace(':', '/').replace('git@', 'http://');
+      } else {
+        res = dist;
+      }
+      res = res.replace('.git', '');
+    }
+  });
+  return res;
+};
+
+if (_.isExistedFile(git_config)) {
+  const content = fs.readFileSync(git_config, 'utf8');
+  const url = get_remote_url(content);
+
+  if (!url) {
+    console.log('git remote url not exist');
+    return;
+  }
+  child_process.execSync(`${openShell} ${url}`);
+} else {
+  console.log('git config file not exist');
+}

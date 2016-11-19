@@ -1,0 +1,33 @@
+{
+  "name": "openit",
+  "version": "1.0.3",
+  "description": "openit",
+  "keywords": [
+    "open"
+  ],
+  "bin": {
+    "openit": "./bin/openit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xudafeng/openit.git"
+  },
+  "dependencies": {
+    "xutil": "^1.0.3"
+  },
+  "devDependencies": {
+    "jshint": "*",
+    "pre-commit": "1.1.1"
+  },
+  "scripts": {
+    "jshint": "make jshint"
+  },
+  "pre-commit": [
+    "jshint"
+  ],
+  "homepage": "https://github.com/xudafeng/openit",
+  "author": "xudafeng",
+  "email": "xudafeng@126.com",
+  "blog": "http://xdf.me",
+  "license": "MIT"
+}
