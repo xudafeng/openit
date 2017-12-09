@@ -9,7 +9,7 @@
 
 ## Installment
 
-```shell
+```bash
 $ npm i openit -g
 ```
 
