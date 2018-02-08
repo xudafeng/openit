@@ -1,6 +1,6 @@
 {
   "name": "openit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "openit",
   "keywords": [
     "open"
@@ -16,18 +16,15 @@
     "xutil": "^1.0.3"
   },
   "devDependencies": {
-    "jshint": "*",
-    "pre-commit": "1.1.1"
+    "jshint": "*"
   },
   "scripts": {
-    "jshint": "make jshint"
+    "lint": "jshint .",
+    "ci": "npm run lint"
   },
   "pre-commit": [
     "jshint"
   ],
   "homepage": "https://github.com/xudafeng/openit",
-  "author": "xudafeng",
-  "email": "xudafeng@126.com",
-  "blog": "http://xdf.me",
   "license": "MIT"
 }
