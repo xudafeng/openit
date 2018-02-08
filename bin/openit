@@ -1,16 +1,4 @@
 #!/usr/bin/env node
-/* ================================================================
- * openit by xdf(xudafeng[at]126.com)
- *
- * first created at : Fri Nov 18 2016 18:42:28 GMT+0800 (CST)
- *
- * ================================================================
- * Copyright 2013 xdf
- *
- * Licensed under the MIT License
- * You may not use this file except in compliance with the License.
- *
- * ================================================================ */
 
 'use strict';
 
@@ -38,13 +26,12 @@ var get_remote_url = content => {
     if (str === 'url = git@' || str === 'url = http') {
       const _list = item.split(' ');
       const dist = _list[_list.length - 1];
-
       if (dist.slice(0, 4) === 'git@') {
         res = dist.replace(':', '/').replace('git@', 'http://');
       } else {
         res = dist;
       }
-      res = res.replace('.git', '');
+      res = res.replace(/\.git$/, '');
     }
   });
   return res;
