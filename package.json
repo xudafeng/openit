@@ -16,15 +16,16 @@
     "xutil": "^1.0.3"
   },
   "devDependencies": {
+    "git-contributor": "^1.0.8",
     "jshint": "*"
   },
   "scripts": {
     "lint": "jshint .",
-    "ci": "npm run lint"
+    "ci": "npm run lint",
+    "contributor": "git-contributor"
   },
   "pre-commit": [
     "jshint"
   ],
-  "homepage": "https://github.com/xudafeng/openit",
   "license": "MIT"
 }
