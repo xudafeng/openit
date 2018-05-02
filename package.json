@@ -1,6 +1,6 @@
 {
   "name": "openit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "openit",
   "keywords": [
     "open"
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/xudafeng/openit.git"
+    "url": "git@github.com:xudafeng/openit.git"
   },
   "dependencies": {
     "xutil": "^1.0.3"

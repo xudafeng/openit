@@ -15,6 +15,8 @@ const linuxShell = platform === 'linux' ? 'xdg-open' : 'open';
 const openShell = platform === 'win32' ? 'start' : linuxShell;
 
 const git_config = path.join(cwd, '.git', 'config');
+const git_config_second = path.join(cwd, '..', '.git', 'config');
+const git_config_third = path.join(cwd, '..', '..', '.git', 'config');
 
 var get_remote_url = content => {
   const list = content.split(EOL);
@@ -37,15 +39,21 @@ var get_remote_url = content => {
   return res;
 };
 
-if (_.isExistedFile(git_config)) {
-  const content = fs.readFileSync(git_config, 'utf8');
-  const url = get_remote_url(content);
+_.forEach([
+  git_config,
+  git_config_second,
+  git_config_third
+], git_config => {
+  if (_.isExistedFile(git_config)) {
+    const content = fs.readFileSync(git_config, 'utf8');
+    const url = get_remote_url(content);
 
-  if (!url) {
-    console.log('git remote url not exist');
-    return;
+    if (!url) {
+      console.log('git remote url not exist');
+      return true;
+    }
+    child_process.execSync(`${openShell} ${url}`);
+    return false;
   }
-  child_process.execSync(`${openShell} ${url}`);
-} else {
-  console.log('git config file not exist');
-}
+  return true;
+});
