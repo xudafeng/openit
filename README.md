@@ -10,6 +10,10 @@
 ## Installment
 
 ```bash
+$ npx openit
+```
+
+```bash
 $ npm i openit -g
 ```
 
