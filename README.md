@@ -2,7 +2,7 @@
 
 [![NPM version][npm-image]][npm-url]
 
-[npm-image]: https://img.shields.io/npm/v/openit.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/openit.svg
 [npm-url]: https://npmjs.org/package/openit
 
 > git open
