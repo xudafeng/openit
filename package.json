@@ -3,11 +3,15 @@
   "version": "1.0.5",
   "description": "openit",
   "keywords": [
-    "open"
+    "open",
+    "git"
   ],
   "bin": {
-    "openit": "./bin/openit"
+    "openit": "./bin/openit.js"
   },
+  "files": [
+    "bin/**/*.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:xudafeng/openit.git"
@@ -16,7 +20,7 @@
     "xutil": "^1.0.3"
   },
   "devDependencies": {
-    "git-contributor": "^1.0.8",
+    "git-contributor": "1",
     "jshint": "*"
   },
   "scripts": {
